@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import WeatherTable from "./pages/WeatherTable";
+import WeatherChart from "./pages/WeatherChart";
+import Calculator from "./pages/Calculator";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./pages/Layout";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <WeatherTable />
+            </Layout>
+          }
+        />
+        <Route
+          path="/chart"
+          element={
+            <Layout>
+              <WeatherChart />
+            </Layout>
+          }
+        />
+        <Route
+          path="/calculator"
+          element={
+            <Layout>
+              <Calculator />
+            </Layout>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
